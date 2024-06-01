@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FLApp</string>
+    <string name="error_message_connection_api">Ошибка подключения к api или введены неверные данные</string>
+    <string name="error_message_fields_is_not_filled">Не все поля заполнены</string>
+</resources>
