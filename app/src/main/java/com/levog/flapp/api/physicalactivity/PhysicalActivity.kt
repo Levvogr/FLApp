@@ -1,4 +1,4 @@
-package com.example.retrofit.api.physicalactivity
+package com.levog.flapp.api.physicalactivity
 
 data class PhysicalActivity(
     val id: Long,

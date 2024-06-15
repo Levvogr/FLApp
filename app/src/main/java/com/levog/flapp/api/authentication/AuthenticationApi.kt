@@ -1,7 +1,6 @@
-package com.example.myapplicationjetpcomp.api.authentication
+package com.levog.flapp.api.authentication
 
-import com.example.myapplicationjetpcomp.api.authentication.Token
-import retrofit2.Call
+import com.levog.flapp.api.authentication.Token
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST

@@ -2,34 +2,53 @@ package com.levog.flapp.navigation.navgraph
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import androidx.navigation.navigation
+import com.levog.flapp.navigation.destinations.ArgumentsRoute
 import com.levog.flapp.navigation.destinations.NavigationGraphRoute
 import com.levog.flapp.navigation.destinations.ScreenRoute
 import com.levog.flapp.ui.screens.medicalexamination.appointment.MedicalExaminationAppointmentScreen
 import com.levog.flapp.ui.screens.medicalexamination.details.MedicalExaminationDetailsScreen
 import com.levog.flapp.ui.screens.medicalexamination.list.MedicalExaminationListScreen
+import com.levog.flapp.ui.screens.medicalexamination.start.MedicalExaminationStartScreen
 
 fun NavGraphBuilder.medicalExaminationGraph(
     navController: NavHostController
 ){
     navigation(
-        startDestination = ScreenRoute.MedicalExaminationGraph.MedicalExaminationList.route,
+        startDestination = ScreenRoute.MedicalExaminationGraph.MedicalExaminationStart.route,
         route = NavigationGraphRoute.MedicalExamination.route
     ) {
+        composable(
+            route = ScreenRoute.MedicalExaminationGraph.MedicalExaminationStart.route
+        ){
+            MedicalExaminationStartScreen(
+                goToHomeScreen = {
+                    navController.popBackStack()
+                },
+                goToDetailsScreen = {
+                    navController.navigate(ScreenRoute.MedicalExaminationGraph.MedicalExaminationDetails.route+
+                            "/$it")
+                },
+                goToAppointmentScreen = {
+                    navController.navigate(ScreenRoute.MedicalExaminationGraph.MedicalExaminationAppointment.route)
+                },
+                goToListScreen = {
+                    navController.navigate(ScreenRoute.MedicalExaminationGraph.MedicalExaminationList.route)
+                })
+        }
         composable(
             route = ScreenRoute.MedicalExaminationGraph.MedicalExaminationList.route
         ) {
             MedicalExaminationListScreen(
-                goToHomeScreen={
-                    navController.navigate(NavigationGraphRoute.Home.route) {
-                        popUpTo(NavigationGraphRoute.Home.route){
-                            inclusive = true
-                        }
-                    }
+                goToStartScreen={
+                    navController.popBackStack()
                 },
                 goToDetailsScreen={
-                    navController.navigate(ScreenRoute.MedicalExaminationGraph.MedicalExaminationDetails.route)
+                    navController.navigate(ScreenRoute.MedicalExaminationGraph.MedicalExaminationDetails.route+
+                            "/$it")
                 },
                 goToAppointmentScreen={
                     navController.navigate(ScreenRoute.MedicalExaminationGraph.MedicalExaminationAppointment.route)
@@ -37,15 +56,17 @@ fun NavGraphBuilder.medicalExaminationGraph(
             )
         }
         composable(
-            route = ScreenRoute.MedicalExaminationGraph.MedicalExaminationDetails.route
+            route = ScreenRoute.MedicalExaminationGraph.MedicalExaminationDetails.route +
+                    "/{${ArgumentsRoute.MedicalExaminationGraph.MedicalExaminationDetails.argument}}",
+            arguments = listOf(navArgument(
+                ArgumentsRoute.MedicalExaminationGraph.MedicalExaminationDetails.argument
+            ) {
+                type = NavType.IntType
+            })
         ) {
             MedicalExaminationDetailsScreen(
-                goToListScreen={
-                    navController.navigate(ScreenRoute.MedicalExaminationGraph.MedicalExaminationList.route){
-                        popUpTo(ScreenRoute.MedicalExaminationGraph.MedicalExaminationList.route){
-                            inclusive = true
-                        }
-                    }
+                goToBack={
+                    navController.popBackStack()
                 }
             )
         }
@@ -53,12 +74,8 @@ fun NavGraphBuilder.medicalExaminationGraph(
             route = ScreenRoute.MedicalExaminationGraph.MedicalExaminationAppointment.route
         ) {
             MedicalExaminationAppointmentScreen(
-                goToListScreen={
-                    navController.navigate(ScreenRoute.MedicalExaminationGraph.MedicalExaminationList.route){
-                        popUpTo(ScreenRoute.MedicalExaminationGraph.MedicalExaminationList.route){
-                            inclusive = true
-                        }
-                    }
+                goToBack={
+                    navController.popBackStack()
                 }
             )
         }

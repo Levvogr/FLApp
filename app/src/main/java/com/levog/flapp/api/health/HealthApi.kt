@@ -1,4 +1,3 @@
-package com.example.retrofit.api.health
+package com.levog.flapp.api.health
 
-interface HealthApi {
-}
+interface HealthApi

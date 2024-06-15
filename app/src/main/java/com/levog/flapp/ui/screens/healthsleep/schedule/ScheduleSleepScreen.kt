@@ -1,10 +1,14 @@
 package com.levog.flapp.ui.screens.healthsleep.schedule
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,12 +16,56 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.levog.flapp.ui.components.appbars.MainSmallTopAppBar
 
 @Composable
 fun ScheduleSleepScreen(
     goToStartScreen: () -> Unit,
-    goToDurationScreen: () -> Unit){
-    Column (
+    goToDurationScreen: () -> Unit
+){
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ){
+        Scaffold(
+            topBar = { MainSmallTopAppBar(
+                text = "",
+                fontSize= 27.sp,
+                goToBackScreen = goToStartScreen
+            ) },
+            content = {padding ->
+                Box(
+                    modifier = Modifier
+                        .padding(padding)
+                        .fillMaxSize()
+                ){
+                    Column(
+                        modifier = Modifier
+                            .padding(top = 15.dp)
+                            .fillMaxSize()
+                    ){
+
+                    }
+                }
+            }
+        )
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+    /*Column (
         modifier = Modifier
             .padding(16.dp)
             //.background(Color.Magenta)
@@ -41,12 +89,12 @@ fun ScheduleSleepScreen(
         }
 
 
-    }
+    }*/
 }
 
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewScheduleSleepScreen(){
+private fun PreviewScheduleSleepScreen(){
     ScheduleSleepScreen({},{})
 }

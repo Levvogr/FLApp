@@ -1,5 +1,6 @@
 package com.levog.flapp.navigation.navgraph
 
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -8,9 +9,11 @@ import com.levog.flapp.navigation.destinations.NavigationGraphRoute
 import com.levog.flapp.navigation.destinations.ScreenRoute
 import com.levog.flapp.ui.screens.authentication.authentication.AuthenticationScreen
 import com.levog.flapp.ui.screens.authentication.registration.RegistrationScreen
+import com.levog.flapp.ui.screens.authentication.registration.RegistrationViewModel
 
 fun NavGraphBuilder.authenticationGraph(
-    navController: NavHostController
+    navController: NavHostController,
+    registrationViewModel: RegistrationViewModel
 ){
     navigation(
         startDestination = ScreenRoute.AuthenticationGraph.Authentication.route,
@@ -26,6 +29,7 @@ fun NavGraphBuilder.authenticationGraph(
                             inclusive = true
                         }
                     }
+                    registrationViewModel.updateAllInputElementsToDefault()
                 },
                 goToRegistrationScreen = {
                     navController.navigate(ScreenRoute.AuthenticationGraph.Registration.route)
@@ -42,6 +46,7 @@ fun NavGraphBuilder.authenticationGraph(
                             inclusive = true
                         }
                     }
+                    registrationViewModel.updateAllInputElementsToDefault()
                 },
                 goToAuthenticationScreen = {
                     navController.popBackStack()
@@ -53,7 +58,8 @@ fun NavGraphBuilder.authenticationGraph(
                     }
 
                      */
-                }
+                },
+                registrationViewModel = registrationViewModel
             )
         }
     }

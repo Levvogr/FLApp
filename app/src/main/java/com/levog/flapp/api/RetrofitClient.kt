@@ -1,4 +1,4 @@
-package com.example.myapplicationjetpcomp.api
+package com.levog.flapp.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,12 +8,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitClient {
     private val BASE_URL = "https://fitlife-1hyp.onrender.com/api/"
 
-    public fun getClient(): Retrofit{
+    fun getClient(): Retrofit {
         val interceptor=HttpLoggingInterceptor()
-        interceptor.level=HttpLoggingInterceptor.Level.BODY
+        interceptor.level= HttpLoggingInterceptor.Level.BODY
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(OkHttpClient
+            .client(
+                OkHttpClient
                 .Builder()
                 .addInterceptor(interceptor)
                 .build())

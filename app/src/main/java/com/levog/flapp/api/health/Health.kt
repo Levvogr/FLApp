@@ -1,4 +1,4 @@
-package com.example.retrofit.api.health
+package com.levog.flapp.api.health
 
 data class Health(
     val id: Long,

@@ -1,4 +1,4 @@
-package com.example.retrofit.api.user
+package com.levog.flapp.api.user
 
 data class User(
     val userId: Long,

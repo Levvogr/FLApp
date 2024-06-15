@@ -1,5 +1,6 @@
-package com.example.retrofit.api.user
+package com.levog.flapp.api.user
 
+import com.levog.flapp.api.user.User
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header

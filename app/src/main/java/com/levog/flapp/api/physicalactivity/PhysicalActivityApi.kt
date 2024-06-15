@@ -1,4 +1,3 @@
-package com.example.retrofit.api.physicalactivity
+package com.levog.flapp.api.physicalactivity
 
-interface PhysicalActivityApi {
-}
+interface PhysicalActivityApi

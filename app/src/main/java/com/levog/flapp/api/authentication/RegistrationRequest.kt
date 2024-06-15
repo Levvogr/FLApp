@@ -1,4 +1,4 @@
-package com.example.myapplicationjetpcomp.api.authentication
+package com.levog.flapp.api.authentication
 
 data class RegistrationRequest(
     val username: String,

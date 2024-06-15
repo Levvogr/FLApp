@@ -1,4 +1,7 @@
 package com.levog.flapp.ui.screens.medicalexamination.list
 
-class MedicalExaminationListState {
-}
+import com.levog.flapp.data.room.medicalexamination.MedicalExaminationData
+
+data class MedicalExaminationListState(
+    val itemList: List<MedicalExaminationData> = listOf()
+)

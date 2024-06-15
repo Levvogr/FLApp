@@ -22,9 +22,24 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
+    background = White,
+    onBackground = Black,
+    primary = ContrastLightBlue,
+    onPrimary = White,
+    secondary = ContrastLightBlue,
+    onSecondary = White,
+    tertiary = LightBlue,
+    onTertiary = Black,
+    error = Red,
+
+    //В данном случае описывают цвет шрифта информационных элементов
+    inverseSurface = Black,
+    inverseOnSurface = LightBlack
+    /*
     primary = Purple40,
     secondary = PurpleGrey40,
     tertiary = Pink40
+     */
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
